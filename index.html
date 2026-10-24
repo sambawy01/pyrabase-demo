@@ -223,17 +223,6 @@
       <li><span class="tick">✓</span><span>Components return <em>after</em> the database answers, so nothing dials a dead Service</span></li>
     </ul>
     <div class="card" style="margin-top:14px"><span class="pill ok">PASSED</span> <span class="muted mono" style="font-size:12px">run 35232344750 · six of six</span></div>
-
-    <h2>And the part most decks leave out</h2>
-    <div class="card warnbox callout">
-      <h3>Defects found by running it, not by reviewing it</h3>
-      <p style="margin:0 0 8px">Nine defects in the design document and five harness bugs were found by executing the build —
-        six manifest defects, one lifecycle omission, one missing object, and four assumptions about how a command reaches a
-        pod. <b>None of them was in the copied upstream code.</b></p>
-      <p style="margin:0">Each one now has a check that fails in seconds without a cluster: schema validation with enums,
-        an unbound-variable check, a documented-order check, heredoc manifests parsed, and a denial guard that refuses to
-        read as isolation when nothing works.</p>
-    </div>
   </section>
 
   <!-- ---------------------------------------------------------------- 04 -->
@@ -300,17 +289,12 @@
       </tbody>
     </table>
 
-    <div class="grid k2" style="margin-top:18px">
+    <div style="margin-top:18px">
       <div class="card">
         <h3 style="margin:0 0 8px;font-size:14px">The next two measurements that move the model</h3>
         <p style="margin:0">The <b>200-project load test</b> is the only thing that can move the booked 0.33 GB footprint
           toward the measured 0.13 GB — it is unbooked upside until it runs. The <b>beta benchmark</b> is the only thing that
           prices the 81 % of the FY5 margin that is currently assumed.</p>
-      </div>
-      <div class="card">
-        <h3 style="margin:0 0 8px;font-size:14px">Trust, stated as a habit</h3>
-        <p style="margin:0">Two free-tier figures have been corrected in two revisions. The rule that came out of it: figures
-          are quoted <b>from the workbook</b>, never from a document, and every timing prints the machine it ran on.</p>
       </div>
     </div>
   </section>
