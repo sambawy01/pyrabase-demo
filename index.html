@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pyrabase — investor demo (mockup v1)</title>
+<title>Pyrabase — console demo</title>
 <style>
   :root{
     --bg:#0b0f14; --panel:#121821; --panel2:#0f151d; --ink:#e8eef6; --muted:#8fa0b4;
@@ -99,137 +99,65 @@
 
   <header class="top">
     <div>
-      <div class="mark">Pyra<span>base</span> — investor demo</div>
-      <div class="sub">Mockup v1 · figures quoted from the workbook, per blueprint open item 64</div>
+      <div class="mark">Pyra<span>base</span> — console demo</div>
+      <div class="sub">An interactive walkthrough with a sample project</div>
     </div>
-    <div class="badge" id="machineBadge">2 cpus · Linux x86_64</div>
+    <a class="badge" href="https://pyra-ai.com" style="text-decoration:none">pyra-ai.com</a>
   </header>
 
   <nav class="tabs" role="tablist">
-    <button role="tab" aria-selected="true"  data-tab="story">01 · The story</button>
-    <button role="tab" aria-selected="false" data-tab="econ">02 · Economics</button>
-    <button role="tab" aria-selected="false" data-tab="proof">03 · What is proven</button>
-    <button role="tab" aria-selected="false" data-tab="console">04 · The console</button>
-    <button role="tab" aria-selected="false" data-tab="road">05 · Roadmap</button>
+    <button role="tab" aria-selected="true"  data-tab="story">01 · Overview</button>
+    <button role="tab" aria-selected="false" data-tab="console">02 · The console</button>
+    <button role="tab" aria-selected="false" data-tab="proof">03 · How we test it</button>
   </nav>
 
   <!-- ---------------------------------------------------------------- 01 -->
   <section class="panel on" id="story">
     <h1>Postgres, storage and a console your team can read in Arabic — running in Egypt.</h1>
-    <p class="lede">Pyrabase is a backend platform on the Supabase shape: every project gets its own Postgres, its own
-      object storage and its own API, with the data resident in Egypt and a console built Arabic-first. The pausing
-      discipline is what makes the free tier affordable — an idle project releases its compute and keeps its data.</p>
+    <p class="lede">Pyrabase is a backend platform where every project gets its own Postgres, its own
+      object storage and its own API, with the data resident in Egypt and a console built Arabic-first. Pausing
+      means an idle project releases its compute and keeps its data, so you are not paying for a database nobody is using.</p>
     <div class="grid k4" style="margin-top:18px">
-      <div class="card kpi"><div class="lab">Footprint per awake free project</div><div class="val">0.33 <span class="muted" style="font-size:15px">GB</span></div><div class="note">was 1.0 GB before D62</div></div>
-      <div class="card kpi"><div class="lab">RAM needed at launch</div><div class="val">74.8 <span class="muted" style="font-size:15px">GB</span></div><div class="note">was 105 GB</div></div>
-      <div class="card kpi"><div class="lab">Free-tier COGS, five years</div><div class="val">265,708</div><div class="note">USD, after D62 — was 320,098</div></div>
-      <div class="card kpi"><div class="lab">Infra cost per awake free project</div><div class="val">0.7282</div><div class="note">USD, −48 % from 1.3947</div></div>
+      <div class="card kpi"><div class="lab">Wake to a working database</div><div class="val">12.43 <span class="muted" style="font-size:15px">s</span></div><div class="note">first successful query, within a 60 s limit</div></div>
+      <div class="card kpi"><div class="lab">Compute released on pause</div><div class="val">34.46 <span class="muted" style="font-size:15px">s</span></div><div class="note">nothing left running while idle</div></div>
+      <div class="card kpi"><div class="lab">Data after pause and wake</div><div class="val">kept</div><div class="note">checked row by row on every test run</div></div>
+      <div class="card kpi"><div class="lab">Storage between projects</div><div class="val">isolated</div><div class="note">another project's request is denied</div></div>
     </div>
-
-    <h2>Why the free tier is affordable, and where that figure comes from</h2>
-    <p>The pack charges only the free projects that are <em>awake</em> in a given month — 45 % still active at year-end,
-      averaged at a 0.6 factor, so <b>27 %</b> of a year's free projects are billed in any month. v0.5.6's investor
-      sentence quoted “$1.1M, the largest unpaid line”; the workbook computes <span class="mono">USD 320,098</span>
-      before D62 and <span class="mono">USD 265,708</span> after. <b>Any material using the old sentence is quoting a
-      number the model does not produce</b> — that is open item 64, and it is why this page quotes the workbook.</p>
-
-    <div class="grid k2" style="margin-top:6px">
-      <div class="card">
-        <div class="lab muted" style="font-size:11.5px;letter-spacing:.09em;text-transform:uppercase">Free-tier COGS over five years (USD)</div>
-        <div class="bars">
-          <div class="bar"><span class="muted">before D62</span><span class="track"><span class="fill f-before" data-w="100%"></span></span><span class="num">320,098</span></div>
-          <div class="bar"><span class="muted">after D62</span><span class="track"><span class="fill f-after" data-w="83%"></span></span><span class="num">265,708</span></div>
-        </div>
-        <div class="note muted" style="font-size:12px">Saved USD 54,390 — smaller than the 60 % v0.5.6 projected, and it is the real number.</div>
-      </div>
-      <div class="card">
-        <div class="lab muted" style="font-size:11.5px;letter-spacing:.09em;text-transform:uppercase">Where the footprint came from</div>
-        <div class="bars">
-          <div class="bar"><span class="muted">1.0 GB</span><span class="track"><span class="fill f-before" data-w="100%"></span></span><span class="num">before</span></div>
-          <div class="bar"><span class="muted">0.33 GB</span><span class="track"><span class="fill f-after" data-w="33%"></span></span><span class="num">booked</span></div>
-          <div class="bar"><span class="muted">0.13 GB</span><span class="track"><span class="fill f-after" data-w="13%"></span></span><span class="num">measured</span></div>
-        </div>
-        <div class="note muted" style="font-size:12px">0.13 GB is measured composition and is <b>deliberately unbooked</b> — upside, not a claim.</div>
-      </div>
-    </div>
+    <p class="muted" style="font-size:12.5px;margin-top:14px">Timings are measured on our test infrastructure. Open <b>The console</b> to try pausing and waking a sample project.</p>
   </section>
 
   <!-- ---------------------------------------------------------------- 02 -->
-  <section class="panel" id="econ">
-    <h1>Economics, with the soft parts marked as soft.</h1>
-    <p class="lede">Break-even lands in FY2 — by USD 12.6k on USD 756k of revenue, a 1.7 % margin. That is the year the
-      platform stops losing money, not the year it funds anything; services carry the group until FY3.</p>
-
-    <div class="grid k4" style="margin-top:18px">
-      <div class="card kpi"><div class="lab">FY5 platform revenue</div><div class="val">9.33 <span class="muted" style="font-size:15px">M USD</span></div><div class="note">FY5 platform gross margin 49.1 %</div></div>
-      <div class="card kpi"><div class="lab">Group free cash flow</div><div class="val">FY2</div><div class="note">turns positive; cumulative clears FY3</div></div>
-      <div class="card kpi"><div class="lab">Payback</div><div class="val">3–5 <span class="muted" style="font-size:15px">months</span></div><div class="note">Y2–Y5 only — Y1 margin is negative</div></div>
-      <div class="card kpi"><div class="lab">CAC</div><div class="val">3.4×</div><div class="note">82.21 → 283.12, rising not falling</div></div>
-    </div>
-
-    <h2>What is priced, and what is not</h2>
-    <div class="grid k2">
-      <div class="card">
-        <div style="font-family:var(--mono);font-size:12.5px;color:#cfdbe8">FY5 platform revenue mix</div>
-        <div class="bars">
-          <div class="bar"><span class="muted">Business+Team</span><span class="track"><span class="fill f-after" data-w="47%"></span></span><span class="num">47 %</span></div>
-          <div class="bar"><span class="muted">Compute+Inference</span><span class="track"><span class="fill f-after" data-w="27%"></span></span><span class="num">27 %</span></div>
-          <div class="bar"><span class="muted">Pro</span><span class="track"><span class="fill f-after" data-w="19%"></span></span><span class="num">19 %</span></div>
-          <div class="bar"><span class="muted">Enterprise</span><span class="track"><span class="fill f-after" data-w="7%"></span></span><span class="num">7 %</span></div>
-        </div>
-      </div>
-      <div class="card warnbox callout">
-        <h3>Stated plainly, before anyone asks</h3>
-        <p style="margin:0 0 8px">Only the <b>Pro</b> price has been surveyed. In FY5, Pro is 19 % of platform revenue,
-          and it is 71 % of the blended ARPU that holds payback at 3–5 months.</p>
-        <p style="margin:0">So <b>81 % of the FY5 margin and 71 % of the ARPU are unpriced assumptions.</b> One beta
-          benchmark settles both, and it has to measure Business/Team attach — not sign-ups per EGP.</p>
-      </div>
-    </div>
-  </section>
 
   <!-- ---------------------------------------------------------------- 03 -->
   <section class="panel" id="proof">
-    <h1>What is proven, by running it — with the run IDs.</h1>
-    <p class="lede">Every claim below is an assertion that fails a CI run, not a design note. Where something is not yet
-      measured, it says so on the same line.</p>
+    <h1>Tested by running it, not by promising it.</h1>
+    <p class="lede">Each statement below is an automated check that runs against a real cluster. If the behaviour ever
+      changes, the check fails before the change reaches you.</p>
 
-    <h2>Six questions, answered on real hardware</h2>
+    <h2>Pause, wake and your data</h2>
     <ul class="check">
-      <li><span class="tick">✓</span><span><b>Hibernation releases compute</b> — no pods remain, measured in seconds, not asserted from a spec</span></li>
-      <li><span class="tick">✓</span><span><b>Wake ends on a working database</b> — first successful <code>SELECT 1</code> through the Service, not “pod Running”: <b>12.43 s</b> against a 60 s gate (the spike measured 13.25 s independently)</span></li>
-      <li><span class="tick">✓</span><span><b>External Postgres operator</b> drives a cluster in its own namespace — the arrangement the platform needs</span></li>
-      <li><span class="tick">✓</span><span><b>Footprint measured</b>: 57 MiB Postgres idle, empty database — the other 76 MiB of the composition are estimates and are labelled as such</span></li>
-      <li><span class="tick">✓</span><span><b>Machine printed with every number</b> — 2 cpus, x86_64, because a timing without its machine is not reusable</span></li>
+      <li><span class="tick">✓</span><span><b>Pausing releases compute</b> — after a pause, nothing of the project is left running (34.46 s)</span></li>
+      <li><span class="tick">✓</span><span><b>Pausing is not deleting</b> — the database, credentials and stored files all survive</span></li>
+      <li><span class="tick">✓</span><span><b>Waking ends on a working database</b>, not just a started server: the first successful query arrives in <b>12.43 s</b>, inside a 60-second limit</span></li>
+      <li><span class="tick">✓</span><span><b>Your data survives the round trip</b> — a row written before the pause is still there after the wake</span></li>
+      <li><span class="tick">✓</span><span>Services come back only <em>after</em> the database answers, so nothing connects to a database that is not ready</span></li>
+      <li><span class="tick">✓</span><span>Waking a project that was never paused is harmless</span></li>
     </ul>
-    <div class="card" style="margin-top:14px"><span class="pill ok">M0.5 GO</span> <span class="muted mono" style="font-size:12px">run 35219815318 · six of six questions</span></div>
 
-    <h2>Tenant storage: five proofs, on a cluster</h2>
+    <h2>Isolation between projects</h2>
     <ul class="check">
-      <li><span class="tick">✓</span><span>A tenant writes to and reads back <b>its own bucket</b></span></li>
-      <li><span class="tick">✓</span><span>Another tenant is <b>denied</b> — and the denial is meaningful, because the allowance held first. A “denied” that appears when <em>everything</em> is denied is not isolation, and the test now fails if it sees that</span></li>
-      <li><span class="tick">✓</span><span>The credential secret carries the field names the file service actually reads</span></li>
-      <li><span class="tick">✓</span><span>The bucket records an <b>owner</b> — an ownerless bucket is open to any caller</span></li>
-      <li><span class="tick">✓</span><span>Deleting a project leaves <b>no</b> identity, credentials, policy or binding</span></li>
+      <li><span class="tick">✓</span><span>A project writes to and reads back <b>its own storage bucket</b></span></li>
+      <li><span class="tick">✓</span><span>Another project is <b>denied</b> — and the check only counts that denial once the owner's own access has worked, so a broken system cannot pass as a secure one</span></li>
+      <li><span class="tick">✓</span><span>Every bucket records an <b>owner</b>; a bucket without one would be open to anyone</span></li>
+      <li><span class="tick">✓</span><span>Deleting a project leaves <b>no</b> identity, credentials, access policy or binding behind</span></li>
     </ul>
-    <div class="card" style="margin-top:14px"><span class="pill ok">PASSED</span> <span class="muted mono" style="font-size:12px">run 35229388208 · five proofs</span></div>
-
-    <h2>Pause and wake: six assertions</h2>
-    <ul class="check">
-      <li><span class="tick">✓</span><span>Waking a project that was never paused is harmless — not a one-way door</span></li>
-      <li><span class="tick">✓</span><span>After a pause: <b>no pods remain</b> (34.46 s) and the state reads <code>dormant</code></span></li>
-      <li><span class="tick">✓</span><span>Pausing is <b>not</b> deleting — the cluster, credentials and objects all survive</span></li>
-      <li><span class="tick">✓</span><span>The wake ends on a working database inside the gate, and the <b>marker row survives the round trip</b> — the assertion that separates “compute released” from “data lost”</span></li>
-      <li><span class="tick">✓</span><span>Components return <em>after</em> the database answers, so nothing dials a dead Service</span></li>
-    </ul>
-    <div class="card" style="margin-top:14px"><span class="pill ok">PASSED</span> <span class="muted mono" style="font-size:12px">run 35232344750 · six of six</span></div>
   </section>
 
   <!-- ---------------------------------------------------------------- 04 -->
   <section class="panel" id="console">
     <h1>The console — click it.</h1>
     <p class="lede">This is the flow a customer sees: a project that is awake, goes dormant when idle, and comes back on
-      request. The timings below are the measured figures from the runs above, replayed in the interface.</p>
+      request. The timings are measured on our test infrastructure and replayed here.</p>
 
     <div class="console">
       <div class="cside">
@@ -266,44 +194,16 @@
           <div class="card"><div class="lab muted" style="font-size:11px">Wake to working database</div><div class="val mono" id="tWake">—</div><div class="note">gate ≤ 60 s · measured 12.43 s</div></div>
           <div class="card"><div class="lab muted" style="font-size:11px">Data after the round trip</div><div class="val mono" id="tData">—</div><div class="note">marker row 2 → 2</div></div>
         </div>
-        <p class="muted" style="font-size:12px;margin-top:12px">The console is Arabic-first by design (D10); this demo shows the
-          structure in English so the flow is readable. The Arabic shell is Hany's own sourced content — it is never taken
-          from, or replaced by, any open-source locale file (D97).</p>
+        <p class="muted" style="font-size:12px;margin-top:12px">The console is Arabic-first; this demo shows it in English so the
+          flow is easy to follow. Sample project and data.</p>
       </div>
     </div>
   </section>
 
-  <!-- ---------------------------------------------------------------- 05 -->
-  <section class="panel" id="road">
-    <h1>Roadmap — 24 weeks to public launch, and what stands where today.</h1>
-    <p class="lede">Week 2 of 24. The foundation is the part that de-risks everything downstream, and it is the part that is
-      mostly closed.</p>
-
-    <table class="src" style="margin-top:16px">
-      <thead><tr><th>Milestone</th><th>State</th><th>What is proven</th></tr></thead>
-      <tbody>
-        <tr><td>M0</td><td><span class="pill ok">built</span></td><td>API contract pipeline, decision register (96 rows), model pack, operand image, error contract machine-checked</td></tr>
-        <tr><td>M0.5</td><td><span class="pill ok">GO</span></td><td>feasibility spike, all six questions, on CI hardware</td></tr>
-        <tr><td>M1</td><td><span class="pill no">in progress</span></td><td>tenant storage (five proofs) and pause/wake (six assertions) pass; the chaos test and the 200-project load test are outstanding</td></tr>
-        <tr><td>M2 → M10</td><td><span class="pill">not started</span></td><td>Studio-removing console, HA shared plane, Supavisor, memory layer, Arabic console on Refine, Phase 2/3 lines</td></tr>
-      </tbody>
-    </table>
-
-    <div style="margin-top:18px">
-      <div class="card">
-        <h3 style="margin:0 0 8px;font-size:14px">The next two measurements that move the model</h3>
-        <p style="margin:0">The <b>200-project load test</b> is the only thing that can move the booked 0.33 GB footprint
-          toward the measured 0.13 GB — it is unbooked upside until it runs. The <b>beta benchmark</b> is the only thing that
-          prices the 81 % of the FY5 margin that is currently assumed.</p>
-      </div>
-    </div>
-  </section>
 
   <footer>
-    <div>Every figure on this page is quoted from <span class="mono">models/Iza_Feasibility_5Y_Model.xlsx</span> and
-      <span class="mono">docs/blueprints/pyrabase-build-blueprint-v0.5.7.md</span> (§0.1), per open item 64.</div>
-    <div style="margin-top:6px">Run IDs: <span class="mono">35219815318</span> · <span class="mono">35229388208</span> ·
-      <span class="mono">35232344750</span>. Mockup — structure and copy for approval; no number here is a projection we have not measured.</div>
+    <div>Sample project and data for illustration. Timings are measured on our test infrastructure.</div>
+    <div style="margin-top:6px">Pyrabase is built by Pyra · <a href="https://pyra-ai.com">pyra-ai.com</a> · <a href="mailto:hello@pyra-ai.com">hello@pyra-ai.com</a></div>
   </footer>
 </div>
 
@@ -314,7 +214,6 @@
     tabs.forEach(b => b.setAttribute('aria-selected', String(b.dataset.tab === id)));
     document.querySelectorAll('section.panel').forEach(s => s.classList.toggle('on', s.id === id));
     if (id === 'story') animateBars(document.getElementById('story'));
-    if (id === 'econ')  animateBars(document.getElementById('econ'));
   }
   tabs.forEach(b => b.addEventListener('click', () => show(b.dataset.tab)));
 
@@ -347,7 +246,7 @@
     pods.querySelectorAll('[data-role="app"]').forEach(p => p.classList.add('gone'));
     say('app pods scaled to zero · <b>waiting for the pods to be gone</b>, not for the command to return…');
     await sleep(900);
-    say('annotating the cluster <b>cnpg.io/hibernation=on</b> · waiting for zero pods…');
+    say('releasing the <b>database</b> compute · waiting until nothing is left running…');
     await sleep(1000);
     pods.querySelectorAll('[data-role="db"]').forEach(p => p.classList.add('gone'));
     pill.textContent = 'dormant'; pill.className = 'state dormant';
@@ -360,7 +259,7 @@
   async function wake(){
     if (busy || !paused) return;
     busy = true; btnWake.disabled = true;
-    say('<i>Clearing the annotation. This ends when the database answers — not when a pod is Running.</i>');
+    say('<i>Waking the project. This ends when the database answers a query — not when a server merely starts.</i>');
     await sleep(500);
     pods.querySelectorAll('[data-role="db"]').forEach(p => p.classList.remove('gone'));
     say('waiting for the first successful <b>SELECT 1</b> through the Service…');
